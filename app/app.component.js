@@ -1,29 +1,23 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-    AppRegistry,
-    StyleSheet,
-    Text,
-    View
+    AppRegistry
 } from 'react-native';
+import {
+    StackNavigator,
+    TabNavigator,
+    DrawerNavigator
+} from 'react-navigation';
+import {LoginScreen} from "./screens/LoginScreen";
+import {HomeScreen} from "./screens/HomeScreen";
 
-
-export class App extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>Wallet App</Text>
-            </View>
-        );
+export const App = DrawerNavigator({
+    Login: {screen: LoginScreen},
+    Main: {
+        screen: StackNavigator({
+            Home: {screen: HomeScreen}
+        })
     }
-}
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    }
 });
 
 AppRegistry.registerComponent('App', () => App);
